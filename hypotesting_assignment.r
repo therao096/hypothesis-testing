@@ -8,6 +8,8 @@ attach(cutlet)
 shapiro.test(Unit.A)
 shapiro.test(Unit.B)
 var.test(Unit.A,Unit.B)
+###### as variances are not equal 2 sample t test for unequal variances
+t.test(Unit.A, Unit.B,alternative = "two.sided" , conf.level=0.95, correct= TRUE)
   ####
 
 labtat <- read.csv("LabTAT.csv")
@@ -51,7 +53,7 @@ stackeddata <- stack(costform)
 View(stackeddata)
 table(stackeddata)
 chisq.test(table(stackeddata))
-###########################################
+###############################################################################3
 fantaloons <- read.csv("Faltoons.csv")
 View(fantaloons)
 attach(fantaloons)
@@ -62,4 +64,8 @@ View(fantaloons)
 stacked <- stack(fantaloons)
 View(stacked)
 table(stacked)
-chisq.test(table(stacked))
+prop.test(x=c(113,167),n=c(400,400),conf.level = 0.95,correct = FALSE,alternative = "two.sided")
+#### as p value is less than 0.05
+prop.test(x=c(113,167),n=c(400,400),conf.level = 0.95,correct = FALSE,alternative = "greater")
+
+ 
